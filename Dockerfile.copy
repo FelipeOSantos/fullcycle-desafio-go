@@ -1,0 +1,7 @@
+FROM scratch
+
+WORKDIR /go/bin/app
+
+COPY . .
+
+ENTRYPOINT [ "./main" ]
