@@ -5,9 +5,10 @@ COPY . .
 
 RUN go build -ldflags "-s -w" main.go
 
-FROM alpine:3.5
+FROM scratch
 
 WORKDIR /go/bin/app
-COPY --from=builder ["/go/src/app/main", "/go/src/app/entrypoint.sh", "./"]
+COPY --from=builder go/src/app/main .
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+ENTRYPOINT [ "./main" ]
+
